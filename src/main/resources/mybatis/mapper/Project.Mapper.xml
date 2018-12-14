@@ -11,19 +11,19 @@
 		<result column="manufacturer" property="Manufacturer" />
 		<result column="consignee" property="Consignee" />
 		<result column="admin" property="Admin" />
-		<result column="materials" property="Materials" typeHandler="cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler" />
+		<result column="materials" property="Materials" typeHandler="cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler" />
 	</resultMap>
 
 	<insert id="insert" parameterType="ProjectBean" keyProperty="id" useGeneratedKeys="true">
 		insert into <include refid="t_project"/> (corporation, create_time, update_time, delete_time, is_deleted, name, project_number, customer, manufacturer, consignee, admin, materials)
-		values (#{Corporation}, now(), now(), NULL , FALSE , #{Name}, #{ProjectNumber}, #{Customer}, #{Manufacturer}, #{Consignee}, #{Admin}, #{Materials,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler})
+		values (#{Corporation}, now(), now(), NULL , FALSE , #{Name}, #{ProjectNumber}, #{Customer}, #{Manufacturer}, #{Consignee}, #{Admin}, #{Materials,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler})
 	</insert>
 
 	<insert id="batchInsert" parameterType="List" keyProperty="id" useGeneratedKeys="true">
 		insert into <include refid="t_project"/> (corporation, create_time, update_time, delete_time, is_deleted, name, project_number, customer, manufacturer, consignee, admin, materials)
 		values
         <foreach collection="list" item="obj" separator=",">
-            (#{obj.Corporation}, now(), now(), NULL, FALSE, #{obj.Name}, #{obj.ProjectNumber}, #{obj.Customer}, #{obj.Manufacturer}, #{obj.Consignee}, #{obj.Admin}, #{obj.Materials,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler})
+            (#{obj.Corporation}, now(), now(), NULL, FALSE, #{obj.Name}, #{obj.ProjectNumber}, #{obj.Customer}, #{obj.Manufacturer}, #{obj.Consignee}, #{obj.Admin}, #{obj.Materials,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler})
         </foreach>
 	</insert>
 	
@@ -32,7 +32,7 @@
 		<set>
 			update_time = now(),
 			name =  #{Name},
-			materials = #{Materials,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler}
+			materials = #{Materials,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler}
 		</set>
 		<where>
 			id = #{Id}
@@ -57,7 +57,7 @@
 			<trim prefix="materials =case" suffix="end,">
                 <foreach collection="list" item="item">
                     <if test="item.Materials!=null">
-                        when id=#{item.Id} then #{item.Materials,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler}}
+                        when id=#{item.Id} then #{item.Materials,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler}}
                     </if>
                 </foreach>
             </trim>

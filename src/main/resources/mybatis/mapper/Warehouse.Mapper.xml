@@ -8,20 +8,20 @@
 	<resultMap id="beanMap" type="WarehouseBean" extends="cn.AssassinG.ScsyERP.common.entity.BaseEntity.UnLoginableEntityMap">
 		<result column="address" property="Address" />
 		<result column="admin" property="Admin" />
-		<result column="drive_workers" property="DriveWorkers" typeHandler="cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler" />
-		<result column="lift_workers" property="LiftWorkers" typeHandler="cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler" />
+		<result column="drive_workers" property="DriveWorkers" typeHandler="cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler" />
+		<result column="lift_workers" property="LiftWorkers" typeHandler="cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler" />
 	</resultMap>
 
 	<insert id="insert" parameterType="WarehouseBean" keyProperty="id" useGeneratedKeys="true">
 		insert into <include refid="t_warehouse"/> (corporation, create_time, update_time, delete_time, is_deleted, name, phone, address, admin, drive_workers, lift_workers)
-		values (#{Corporation}, now(), now(), NULL , FALSE , #{Name}, #{Phone}, #{Address}, #{Admin}, #{DriveWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler}, #{LiftWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler})
+		values (#{Corporation}, now(), now(), NULL , FALSE , #{Name}, #{Phone}, #{Address}, #{Admin}, #{DriveWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler}, #{LiftWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler})
 	</insert>
 
 	<insert id="batchInsert" parameterType="List" keyProperty="id" useGeneratedKeys="true">
 		insert into <include refid="t_warehouse"/> (corporation, create_time, update_time, delete_time, is_deleted, name, phone, address, admin, drive_workers, lift_workers)
 		values
         <foreach collection="list" item="obj" separator=",">
-            (#{obj.Corporation}, now(), now(), NULL, FALSE, #{obj.Name}, #{obj.Phone}, #{obj.Address}, #{obj.Admin}, #{obj.DriveWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler}, #{obj.LiftWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler})
+            (#{obj.Corporation}, now(), now(), NULL, FALSE, #{obj.Name}, #{obj.Phone}, #{obj.Address}, #{obj.Admin}, #{obj.DriveWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler}, #{obj.LiftWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler})
         </foreach>
 	</insert>
 	
@@ -33,8 +33,8 @@
 			phone = #{Phone},
 			address = #{Address},
 			admin = #{Admin},
-			drive_workers = #{DriveWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler},
-			lift_workers = #{LiftWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler}
+			drive_workers = #{DriveWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler},
+			lift_workers = #{LiftWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler}
 		</set>
 		<where>
 			id = #{Id}
@@ -80,14 +80,14 @@
 			<trim prefix="drive_workers =case" suffix="end,">
 				<foreach collection="list" item="item">
 					<if test="item.DriveWorkers!=null">
-						when id=#{item.Id} then #{item.DriveWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler}
+						when id=#{item.Id} then #{item.DriveWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler}
 					</if>
 				</foreach>
 			</trim>
 			<trim prefix="lift_workers =case" suffix="end,">
 				<foreach collection="list" item="item">
 					<if test="item.LiftWorkers!=null">
-						when id=#{item.Id} then #{item.LiftWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.HashSetTypeHandler}
+						when id=#{item.Id} then #{item.LiftWorkers,typeHandler=cn.AssassinG.ScsyERP.common.core.dao.MyBatisTypeHandler.LongHashSetTypeHandler}
 					</if>
 				</foreach>
 			</trim>
