@@ -7,6 +7,7 @@
 
 	<resultMap id="beanMap" type="ProductBean" extends="cn.AssassinG.ScsyERP.common.entity.BaseEntity.UnLoginableEntityMap">
 		<result column="project" property="Project" />
+		<result column="material" property="Material" />
 		<result column="status" property="Status" typeHandler="cn.AssassinG.ScsyERP.BasicInfo.core.dao.MyBatisHandler.ProductStatusHandler" />
 		<result column="packet_number" property="PacketNumber" />
 		<result column="warehouse" property="Warehouse" />
@@ -40,6 +41,7 @@
 			update_time = now(),
 			name =  #{Name},
 			material = #{Material},
+		  	status = #{Status,typeHandler=cn.AssassinG.ScsyERP.BasicInfo.core.dao.MyBatisHandler.ProductStatusHandler}
 			packet_number = #{PacketNumber},
 			warehouse = #{Warehouse},
 			warehouse_location = #{WarehouseLocation},
@@ -76,6 +78,13 @@
 				<foreach collection="list" item="item">
 					<if test="item.Material!=null">
 						when id=#{item.Id} then #{item.Material}
+					</if>
+				</foreach>
+			</trim>
+			<trim prefix="status =case" suffix="end,">
+				<foreach collection="list" item="item">
+					<if test="item.Status!=null">
+						when id=#{item.Id} then #{item.Status,typeHandler=cn.AssassinG.ScsyERP.BasicInfo.core.dao.MyBatisHandler.ProductStatusHandler}
 					</if>
 				</foreach>
 			</trim>
@@ -209,7 +218,7 @@
 		<if test="IfDeleted != null"> and is_deleted = #{IfDeleted}</if>
 		<if test="Project != null"> and project = #{Project}</if>
 		<if test="Material != null"> and material = #{Material}</if>
-		<if test="Status != null"> and status = #{Status}</if>
+		<if test="Status != null"> and status = #{Status,typeHandler=cn.AssassinG.ScsyERP.BasicInfo.core.dao.MyBatisHandler.ProductStatusHandler}</if>
 		<if test="PacketNumber != null"> and packet_number = #{PacketNumber}</if>
 		<if test="Warehouse != null"> and warehouse = #{Warehouse}</if>
 		<if test="WarehouseLocation != null"> and warehouse_location = #{WarehouseLocation}</if>
