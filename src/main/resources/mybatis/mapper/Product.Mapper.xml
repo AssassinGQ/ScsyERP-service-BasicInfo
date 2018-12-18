@@ -41,7 +41,7 @@
 			update_time = now(),
 			name =  #{Name},
 			material = #{Material},
-		  	status = #{Status,typeHandler=cn.AssassinG.ScsyERP.BasicInfo.core.dao.MyBatisHandler.ProductStatusHandler}
+		  	status = #{Status,typeHandler=cn.AssassinG.ScsyERP.BasicInfo.core.dao.MyBatisHandler.ProductStatusHandler},
 			packet_number = #{PacketNumber},
 			warehouse = #{Warehouse},
 			warehouse_location = #{WarehouseLocation},
