@@ -45,7 +45,7 @@ public class TestProduct {
         product.setInStorageForm(1L);
         product.setMaterial(1L);
         product.setPacketNumber("hwh12345");
-        product.setStatus(ProductStatus.DCK);
+        product.setStatus(ProductStatus.DRK);
         product.setWarehouse(1L);
         product.setPacketType(PacketType.IronBox);
         product.setCorporation(1L);
@@ -67,7 +67,7 @@ public class TestProduct {
         product.setInStorageForm(1L);
         product.setMaterial(1L);
         product.setPacketNumber("hwh12345");
-        product.setStatus(ProductStatus.DCK);
+        product.setStatus(ProductStatus.DRK);
         product.setWarehouse(1L);
         product.setPacketType(PacketType.IronBox);
         Product product1 = new Product();
@@ -77,7 +77,7 @@ public class TestProduct {
         product1.setInStorageForm(1L);
         product1.setMaterial(1L);
         product1.setPacketNumber("hwh12345");
-        product1.setStatus(ProductStatus.DCK);
+        product1.setStatus(ProductStatus.DRK);
         product1.setWarehouse(1L);
         product1.setPacketType(PacketType.IronBox);
         List<Product> products = new ArrayList<Product>();
