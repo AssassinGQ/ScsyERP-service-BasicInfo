@@ -30,5 +30,5 @@ create table t_product (
 alter table t_product comment '货物信息表';
 
 ## 权限的初始化数据
-insert into t_product(corporation, name, project, material, status, packet_number, warehouse, in_storage_form, packet_type) values (-1, "货物1", 1, 1, "已出库", "bh1234", 1, 1, "裸装");
-insert into t_product(corporation, name, project, material, status, packet_number, warehouse, in_storage_form, packet_type) values (-1, "货物2", 1, 1, "已出库", "bh1234", 1, 1, "裸装");
+insert into t_product(corporation, name, project, material, status, packet_number, warehouse, in_storage_form, packet_type) values (-1, "货物1", 1, 1, "待入库", "bh1234", 1, 1, "裸装");
+insert into t_product(corporation, name, project, material, status, packet_number, warehouse, in_storage_form, packet_type) values (-1, "货物2", 1, 1, "待入库", "bh1234", 1, 1, "裸装");
