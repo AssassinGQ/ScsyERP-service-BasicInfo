@@ -16,7 +16,7 @@ create table t_product (
   packet_number VARCHAR(30) NOT NULL                    COMMENT '包号',
   warehouse     BIGINT(20)  NOT NULL                    COMMENT '仓库',
   warehouse_location  VARCHAR(30)                        COMMENT '仓库定位',
-  in_storage_form     BIGINT(20)  NOT NULL               COMMENT '入库单',
+  in_storage_form     BIGINT(20)                          COMMENT '入库单',
   out_storage_form    BIGINT(20)                          COMMENT '出库单',
   packet_type   VARCHAR(15) NOT NULL                     COMMENT '包装类型',
   width         DOUBLE(5,2)                               COMMENT '货物宽度',
@@ -30,5 +30,5 @@ create table t_product (
 alter table t_product comment '货物信息表';
 
 ## 权限的初始化数据
-insert into t_product(corporation, name, project, material, status, packet_number, warehouse, in_storage_form, packet_type) values (-1, "货物1", 1, 1, "待入库", "bh1234", 1, 1, "裸装");
-insert into t_product(corporation, name, project, material, status, packet_number, warehouse, in_storage_form, packet_type) values (-1, "货物2", 1, 1, "待入库", "bh1234", 1, 1, "裸装");
+insert into t_product(corporation, name, project, material, status, packet_number, warehouse, in_storage_form, packet_type) values (-1, "货物1", 1, 1, "已入库", "bh1234", 1, 1, "裸装");
+insert into t_product(corporation, name, project, material, status, packet_number, warehouse, packet_type) values (-1, "货物2", 1, 1, "待入库", "bh1234", 1, "裸装");
