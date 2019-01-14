@@ -23,9 +23,6 @@ public class TruckBizImpl extends UnLoginableBizImpl<Truck> implements TruckBiz 
     }
 
     public Long createWithNameCheck(Truck truck){
-        if(truck.getName() == null || truck.getName().isEmpty()){
-            truck.setName("-1");
-        }
         Map<String, Object> queryMap = new HashMap<>();
         queryMap.put("CarNumber", truck.getCarNumber());
         queryMap.put("IfDeleted", false);
@@ -35,12 +32,7 @@ public class TruckBizImpl extends UnLoginableBizImpl<Truck> implements TruckBiz 
         }else if(trucks.size() == 1){
             throw new TruckBizException(TruckBizException.TRUCKBIZ_PARAMS_ILLEGAL, "车牌号%s被占用", truck.getCarNumber());
         }else{
-            Long id = this.create(truck);
-            if(truck.getName().equals("-1")){
-                truck.setName(truck.getClass().getSimpleName()+id);
-                this.update(truck);
-            }
-            return id;
+            return super.createWithNameCheck(truck);
         }
     }
 
