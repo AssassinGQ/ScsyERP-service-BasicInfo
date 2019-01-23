@@ -8,6 +8,7 @@ import cn.AssassinG.ScsyERP.BasicInfo.facade.entity.Project;
 import cn.AssassinG.ScsyERP.BasicInfo.facade.exceptions.ProjectBizException;
 import cn.AssassinG.ScsyERP.common.core.biz.impl.UnLoginableBizImpl;
 import cn.AssassinG.ScsyERP.common.core.dao.BaseDao;
+import cn.AssassinG.ScsyERP.common.utils.ValidUtils;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,19 @@ public class ProjectBizImpl extends UnLoginableBizImpl<Project> implements Proje
     private ProjectDao projectDao;
     protected BaseDao<Project> getDao() {
         return this.projectDao;
+    }
+
+    @Override
+    public Long create(Project project) {
+        if(project.getProjectNumber() == null){
+            project.setProjectNumber(String.valueOf(System.currentTimeMillis()));
+        }
+        ValidUtils.ValidationWithExp(project);
+        Long id = getDao().insert(project);
+        if(!project.getProjectNumber().startsWith("gc")){
+            project.setProjectNumber("gc" + id);
+        }
+        return id;
     }
 
     /**
