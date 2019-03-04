@@ -33,6 +33,7 @@ public class ProjectBizImpl extends UnLoginableBizImpl<Project> implements Proje
         Long id = getDao().insert(project);
         if(!project.getProjectNumber().startsWith("gc")){
             project.setProjectNumber("gc" + id);
+            getDao().update(project);
         }
         return id;
     }
