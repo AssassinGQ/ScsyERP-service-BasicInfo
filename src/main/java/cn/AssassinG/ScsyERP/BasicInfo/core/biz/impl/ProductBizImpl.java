@@ -4,9 +4,11 @@ import cn.AssassinG.ScsyERP.BasicInfo.core.biz.ProductBiz;
 import cn.AssassinG.ScsyERP.BasicInfo.core.dao.ProductDao;
 import cn.AssassinG.ScsyERP.BasicInfo.facade.entity.Product;
 import cn.AssassinG.ScsyERP.BasicInfo.facade.enums.PacketType;
+import cn.AssassinG.ScsyERP.BasicInfo.facade.enums.ProductStatus;
 import cn.AssassinG.ScsyERP.BasicInfo.facade.exceptions.ProductBizException;
 import cn.AssassinG.ScsyERP.common.core.biz.impl.UnLoginableBizImpl;
 import cn.AssassinG.ScsyERP.common.core.dao.BaseDao;
+import cn.AssassinG.ScsyERP.common.utils.ValidUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,15 @@ public class ProductBizImpl extends UnLoginableBizImpl<Product> implements Produ
     private ProductDao productDao;
     protected BaseDao<Product> getDao() {
         return this.productDao;
+    }
+
+
+    @Override
+    public Long create(Product product) {
+        product.setStatus(ProductStatus.DRK);
+        ValidUtils.ValidationWithExp(product);
+        Long id = getDao().insert(product);
+        return id;
     }
 
     /**
