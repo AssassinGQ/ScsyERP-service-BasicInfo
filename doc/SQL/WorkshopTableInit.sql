@@ -20,5 +20,5 @@ create table t_workshop (
 alter table t_workshop comment '生产车间信息表';
 
 ## 权限的初始化数据
-insert into t_workshop(corporation, name, phone, address, manufacturer) values (-1, "生产车间1", 18811111111, "浙江绍兴", 1);
-insert into t_workshop(corporation, name, phone, address, manufacturer) values (-1, "生产车间2", 18811111111, "湖北武汉", 1);
+insert into t_workshop(corporation, name, phone, address, manufacturer) values (1, "生产车间1", 18811111111, "浙江绍兴", 1);
+insert into t_workshop(corporation, name, phone, address, manufacturer) values (1, "生产车间2", 18811111111, "湖北武汉", 1);

@@ -22,5 +22,5 @@ create table t_project (
 alter table t_project comment '项目信息表';
 
 ## 权限的初始化数据
-insert into t_project(corporation, name, project_number, customer, manufacturer, consignee, admin) values (-1, "项目1", "xm1", 1, 1, 1, 1);
-insert into t_project(corporation, name, project_number, customer, manufacturer, consignee, admin) values (-1, "项目2", "xm1", 1, 1, 1, 1);
+insert into t_project(corporation, name, project_number, customer, manufacturer, consignee, admin) values (1, "项目1", "xm1", 1, 1, 1, 1);
+insert into t_project(corporation, name, project_number, customer, manufacturer, consignee, admin) values (1, "项目2", "xm1", 1, 1, 1, 1);

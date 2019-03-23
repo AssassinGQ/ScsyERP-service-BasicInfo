@@ -22,5 +22,5 @@ create table t_truck (
 alter table t_truck comment '车辆信息表';
 
 ## 权限的初始化数据
-insert into t_truck(corporation, name, phone, car_number) values (-1, "车1", 18811111111, "川C1234");
-insert into t_truck(corporation, name, phone, car_number) values (-1, "车2", 18811111111, "浙A1234");
+insert into t_truck(corporation, name, phone, car_number) values (1, "车1", 18811111111, "川C1234");
+insert into t_truck(corporation, name, phone, car_number) values (1, "车2", 18811111111, "浙A1234");

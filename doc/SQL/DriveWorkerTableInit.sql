@@ -17,5 +17,5 @@ create table t_drive_worker (
 alter table t_drive_worker comment '行车工信息表';
 
 ## 权限的初始化数据
-insert into t_drive_worker(corporation, name, phone) values (-1, "行车工1", 18811111111);
-insert into t_drive_worker(corporation, name, phone) values (-1, "行车工2", 18811111111);
+insert into t_drive_worker(corporation, name, phone) values (1, "行车工1", 18811111111);
+insert into t_drive_worker(corporation, name, phone) values (1, "行车工2", 18811111111);
