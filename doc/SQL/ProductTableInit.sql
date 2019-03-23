@@ -14,7 +14,7 @@ create table t_product (
   name          VARCHAR(30) NOT NULL                    COMMENT '名称',
   status        VARCHAR(15) NOT NULL                    COMMENT '货物状态',
   packet_number VARCHAR(30) NOT NULL                    COMMENT '包号',
-  warehouse     BIGINT(20)  NOT NULL                    COMMENT '仓库',
+  warehouse     BIGINT(20)                              COMMENT '仓库',
   warehouse_location  VARCHAR(30)                        COMMENT '仓库定位',
   in_storage_form     BIGINT(20)                          COMMENT '入库单',
   out_storage_form    BIGINT(20)                          COMMENT '出库单',
