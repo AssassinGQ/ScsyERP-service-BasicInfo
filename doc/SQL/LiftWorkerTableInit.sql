@@ -17,5 +17,5 @@ create table t_lift_worker (
 alter table t_lift_worker comment '起重工信息表';
 
 ## 权限的初始化数据
-insert into t_lift_worker(corporation, name, phone) values (1, "起重工1", 18811111111);
-insert into t_lift_worker(corporation, name, phone) values (1, "起重工2", 18811111111);
+insert into t_lift_worker(corporation, name, phone) values (1, "lift_worker_1", 18811111111);
+insert into t_lift_worker(corporation, name, phone) values (1, "lift_worker_2", 18811111111);

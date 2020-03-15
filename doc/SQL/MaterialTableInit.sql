@@ -17,5 +17,5 @@ create table t_material (
 alter table t_material comment '物料信息表';
 
 ## 权限的初始化数据
-insert into t_material(corporation, name, figure_number) values (1, "物料1", "th1234");
-insert into t_material(corporation, name, figure_number) values (1, "物料2", "th1235");
+insert into t_material(corporation, name, figure_number) values (1, "material_1", "th1234");
+insert into t_material(corporation, name, figure_number) values (1, "material_2", "th1235");

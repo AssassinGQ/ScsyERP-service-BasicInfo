@@ -21,5 +21,5 @@ create table t_warehouse (
 alter table t_warehouse comment '仓库信息表';
 
 ## 权限的初始化数据
-insert into t_warehouse(corporation, name, phone, address, admin) values (1, "仓库1", 18811111111, "浙江绍兴", 1);
-insert into t_warehouse(corporation, name, phone, address, admin) values (1, "仓库2", 18811111111, "湖北武汉", 1);
+insert into t_warehouse(corporation, name, phone, address, admin) values (1, "warehouse_1", 18811111111, "shaoxing", 1);
+insert into t_warehouse(corporation, name, phone, address, admin) values (1, "warehouse_2", 18811111111, "wuhan", 1);
